@@ -2,7 +2,7 @@
   "name": "caelumtoken",
   "version": "1.0.0",
   "description": "Home of the CaelumProject",
-  "main": "truffle-config.js",
+  "main": "docs/index.html",
   "directories": {
     "test": "test"
   },

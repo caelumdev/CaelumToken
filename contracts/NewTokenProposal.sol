@@ -3,7 +3,7 @@ pragma solidity ^0.4.24;
 
 import "./IcaelumVoting.sol";
 
-contract NewTokenProposal is votingContract {
+contract NewTokenProposal is IcaelumVoting {
 
     enum VOTE_TYPE {TOKEN, TEAM}
 

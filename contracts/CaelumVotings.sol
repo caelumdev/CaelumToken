@@ -1,6 +1,7 @@
 //solium-disable linebreak-style
 pragma solidity ^0.4.24;
 
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./IcaelumVoting.sol";
 
 contract CaelumVotings {
@@ -52,7 +53,7 @@ contract CaelumVotings {
         require (pastProposalTimeRules (), "You need to wait 90 days before submitting a new proposal.");
         require (!proposalPending, "Another proposal is pending.");
 
-        uint _contractType = votingContract(_contract).getContractType();
+        uint _contractType = IcaelumVoting(_contract).getContractType();
         proposalList[proposalCounter] = Proposals(_contract, 0, now, 0, VOTE_TYPE(_contractType));
 
         proposalCounter++;
@@ -110,7 +111,7 @@ contract CaelumVotings {
      * @return bool
      */
     function LastProposalCanDiscard () public view returns (bool) {
-        uint daysBeforeDiscard = votingContract(proposalList[proposalCounter - 1].tokenContract).getExpiry();
+        uint daysBeforeDiscard = IcaelumVoting(proposalList[proposalCounter - 1].tokenContract).getExpiry();
         uint entryDate = proposalList[proposalCounter - 1].proposedOn;
         uint expiryDate = entryDate + (daysBeforeDiscard * 1 days);
 
@@ -122,7 +123,7 @@ contract CaelumVotings {
      * @dev Returns all details about a proposal
      */
     function getTokenProposalDetails(uint proposalID) public view returns(address, uint, uint, uint) {
-        return votingContract(proposalList[proposalID].tokenContract).getTokenProposalDetails();
+        return IcaelumVoting(proposalList[proposalID].tokenContract).getTokenProposalDetails();
     }
 
     /**

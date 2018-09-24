@@ -2,6 +2,7 @@
 pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 import "./abstractCaelum.sol";
 
 contract CaelumAcceptERC20 is abstractCaelum {

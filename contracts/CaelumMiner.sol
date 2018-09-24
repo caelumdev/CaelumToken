@@ -3,8 +3,10 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
+import "./ExtendedMath.sol";
 import "./CaelumVotings.sol";
 import "./CaelumMasternode.sol";
+
 
 contract CaelumMiner is StandardToken, CaelumMasternode {
     using SafeMath for uint;
