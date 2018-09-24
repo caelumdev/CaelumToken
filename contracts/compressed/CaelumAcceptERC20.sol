@@ -33,7 +33,7 @@ contract CaelumAcceptERC20 is abstractCaelum {
      * @dev Can be hardcoded in the constructor. Given the contract size, we decided to separate it.
      * @return bool
      */
-    function addOwnToken() public returns (bool) {
+    function addOwnToken() onlyOwner public returns (bool) {
         require(setOwnContract);
         addToWhitelist(this, 5000 * 1e8, 36500);
         setOwnContract = false;

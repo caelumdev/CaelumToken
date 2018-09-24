@@ -48,7 +48,7 @@ contract CaelumVotings {
      * @param _contract Proposal contract address
      * @return uint ProposalID
      */
-    function pushProposal(address _contract) public returns (uint) {
+    function pushProposal(address _contract) onlyOwner public returns (uint) {
         if(proposalCounter != 0)
         require (pastProposalTimeRules (), "You need to wait 90 days before submitting a new proposal.");
         require (!proposalPending, "Another proposal is pending.");
@@ -100,7 +100,7 @@ contract CaelumVotings {
     /**
      * @dev Rejects the last proposal after the allowed voting time has expired and it's not accepted.
      */
-    function discardRejectedProposal() public returns (bool) {
+    function discardRejectedProposal() onlyOwner public returns (bool) {
         if (LastProposalCanDiscard())
         proposalPending = false;
         return (true);
